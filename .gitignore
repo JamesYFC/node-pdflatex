@@ -1,7 +1,6 @@
 /.vscode
 /lib
 /node_modules
-package-lock.json
 yarn.lock
 *.log
 *.aux

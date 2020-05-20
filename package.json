@@ -1,6 +1,6 @@
 {
   "name": "node-pdflatex",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "PDFLaTeX wrapper for Node",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/jest": "^21.1.4",
-    "@types/node": "^8.0.46",
+    "@types/node": "^8.10.61",
     "@types/tmp": "0.0.33",
     "jest": "^21.2.1",
     "prettier": "^1.7.4",

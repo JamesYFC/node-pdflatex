@@ -16,6 +16,7 @@ import { readErrorLog } from './readErrorLog'
 export type Options = {
   texInputs?: string[]
   shellEscape?: boolean
+  compileExtraTimes?: number
 }
 
 /**
@@ -46,10 +47,25 @@ const createCommand = (options: Options) =>
  */
 const compile = async (tempPath: string, options: Options) => {
   try {
-    await exec(createCommand(options), {
+    if (options.compileExtraTimes === null ||
+      options.compileExtraTimes === undefined ||
+      options.compileExtraTimes < 0)
+    {
+      options.compileExtraTimes = 0;
+    }
+
+    const command = createCommand(options);
+    const execOptions = {
       cwd: tempPath,
       env: createChildEnv(options.texInputs)
-    })
+    };
+
+    let compileTimes = options.compileExtraTimes + 1;
+    while (compileTimes-- > 0)
+    {
+      await exec(command, execOptions);  
+    }
+    
     return readFile(join(tempPath, 'texput.pdf'))
   } catch {
     throw await readErrorLog(tempPath)

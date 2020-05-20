@@ -16,7 +16,8 @@
     "test": "jest",
     "build": "tsc",
     "dev": "tsc --watch",
-    "prepublish": "jest && tsc"
+    "prepublish": "jest && tsc",
+    "prepare": "tsc"
   },
   "devDependencies": {
     "@types/jest": "^21.1.4",
